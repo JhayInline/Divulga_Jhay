@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Divulga_Jhay - Gerador de Anúncio</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f5f5;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 500px;
+      margin: 40px auto;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button {
+      background: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #45a049;
+    }
+    textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      border-radius: 5px;
+    }
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Divulga_Jhay</h1>
+    <p>Cole seu link de afiliado abaixo:</p>
+    <input type="text" id="linkInput" placeholder="https://..." />
+    <button onclick="gerarAnuncio()">Gerar Anúncio</button>
+
+    <div id="resultado" class="hidden">
+      <h2>Anúncio Gerado:</h2>
+      <textarea id="anuncioTexto" rows="6"></textarea>
+      <button onclick="copiarTexto()">Copiar Anúncio</button>
+    </div>
+  </div>
+
+  <script>
+    function gerarAnuncio() {
+      const link = document.getElementById("linkInput").value;
+      if (!link) {
+        alert("Por favor, cole um link primeiro.");
+        return;
+      }
+
+      let loja = "";
+      if (link.includes("shopee")) loja = "Shopee";
+      else if (link.includes("mercadolivre")) loja = "Mercado Livre";
+      else if (link.includes("amazon")) loja = "Amazon";
+      else if (link.includes("aliexpress")) loja = "AliExpress";
+      else loja = "Loja Parceira";
+
+      const anuncio = `🔥 Oferta imperdível na ${loja}!
+
+Confira esse produto que está bombando e com preço especial:
+👉 ${link}
+
+Corra antes que acabe! 🛍️🚀`;
+
+      document.getElementById("anuncioTexto").value = anuncio;
+      document.getElementById("resultado").classList.remove("hidden");
+    }
+
+    function copiarTexto() {
+      const texto = document.getElementById("anuncioTexto");
+      texto.select();
+      document.execCommand("copy");
+      alert("Anúncio copiado com sucesso!");
+    }
+  </script>
+</body>
+</html>
