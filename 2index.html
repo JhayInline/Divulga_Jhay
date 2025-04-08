@@ -1,0 +1,201 @@
+\<!DOCTYPE html>
+
+\<html lang="pt-BR">
+
+\<head>
+
+&#x20; \<meta charset="UTF-8">
+
+&#x20; \<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+&#x20; \<title>Divulga\_Jhay - Gerador de Anúncio\</title>
+
+&#x20; \<link rel="stylesheet" href="style.css">
+
+&#x20; \<style>
+
+&#x20;   body {
+
+&#x20;     font-family: Arial, sans-serif;
+
+&#x20;     background: #f5f5f5;
+
+&#x20;     margin: 0;
+
+&#x20;     padding: 0;
+
+&#x20;   }
+
+&#x20;   .container {
+
+&#x20;     max-width: 500px;
+
+&#x20;     margin: 40px auto;
+
+&#x20;     background: white;
+
+&#x20;     padding: 20px;
+
+&#x20;     border-radius: 10px;
+
+&#x20;     box-shadow: 0 0 10px rgba(0,0,0,0.1);
+
+&#x20;     text-align: center;
+
+&#x20;   }
+
+&#x20;   input[type="text"] {
+
+&#x20;     width: 100%;
+
+&#x20;     padding: 10px;
+
+&#x20;     margin: 10px 0;
+
+&#x20;     border: 1px solid #ccc;
+
+&#x20;     border-radius: 5px;
+
+&#x20;   }
+
+&#x20;   button {
+
+&#x20;     background: #4CAF50;
+
+&#x20;     color: white;
+
+&#x20;     padding: 10px 20px;
+
+&#x20;     border: none;
+
+&#x20;     border-radius: 5px;
+
+&#x20;     cursor: pointer;
+
+&#x20;   }
+
+&#x20;   button\:hover {
+
+&#x20;     background: #45a049;
+
+&#x20;   }
+
+&#x20;   textarea {
+
+&#x20;     width: 100%;
+
+&#x20;     padding: 10px;
+
+&#x20;     margin-top: 10px;
+
+&#x20;     border-radius: 5px;
+
+&#x20;   }
+
+&#x20;   .hidden {
+
+&#x20;     display: none;
+
+&#x20;   }
+
+&#x20; \</style>
+
+\</head>
+
+\<body>
+
+&#x20; \<div class="container">
+
+&#x20;   \<h1>Divulga\_Jhay\</h1>
+
+&#x20;   \<p>Cole seu link de afiliado abaixo:\</p>
+
+&#x20;   \<input type="text" id="linkInput" placeholder="https\://..." />
+
+&#x20;   \<button onclick="gerarAnuncio()">Gerar Anúncio\</button>
+
+
+
+&#x20;   \<div id="resultado" class="hidden">
+
+&#x20;     \<h2>Anúncio Gerado:\</h2>
+
+&#x20;     \<textarea id="anuncioTexto" rows="6">\</textarea>
+
+&#x20;     \<button onclick="copiarTexto()">Copiar Anúncio\</button>
+
+&#x20;   \</div>
+
+&#x20; \</div>
+
+
+
+&#x20; \<script>
+
+&#x20;   function gerarAnuncio() {
+
+&#x20;     const link = document.getElementById("linkInput").value;
+
+&#x20;     if (!link) {
+
+&#x20;       alert("Por favor, cole um link primeiro.");
+
+&#x20;       return;
+
+&#x20;     }
+
+
+
+&#x20;     let loja = "";
+
+&#x20;     if (link.includes("shopee")) loja = "Shopee";
+
+&#x20;     else if (link.includes("mercadolivre")) loja = "Mercado Livre";
+
+&#x20;     else if (link.includes("amazon")) loja = "Amazon";
+
+&#x20;     else if (link.includes("aliexpress")) loja = "AliExpress";
+
+&#x20;     else loja = "Loja Parceira";
+
+
+
+&#x20;     const anuncio = \`🔥 Oferta imperdível na \${loja}!
+
+
+
+Confira esse produto que está bombando e com preço especial:
+
+👉 \${link}
+
+
+
+Corra antes que acabe! 🛍️🚀\`;
+
+
+
+&#x20;     document.getElementById("anuncioTexto").value = anuncio;
+
+&#x20;     document.getElementById("resultado").classList.remove("hidden");
+
+&#x20;   }
+
+
+
+&#x20;   function copiarTexto() {
+
+&#x20;     const texto = document.getElementById("anuncioTexto");
+
+&#x20;     texto.select();
+
+&#x20;     document.execCommand("copy");
+
+&#x20;     alert("Anúncio copiado com sucesso!");
+
+&#x20;   }
+
+&#x20; \</script>
+
+\</body>
+
+\</html>
